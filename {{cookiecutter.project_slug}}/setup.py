@@ -15,11 +15,17 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    # TODO: put package requirements here
+    'Flask-AppConfig',
+    'flask',
+    'flask-ripozo',
+    'ripozo',
+    'ripozo-sqlalchemy',
+    'SQLAlchemy'
 ]
 
 test_requirements = [
-    # TODO: put package test requirements here
+    'unittest2',
+    'mock'
 ]
 
 setup(
@@ -53,6 +59,6 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
     ],
-    test_suite='tests',
+    test_suite='{{cookieuctter.project_slug}}_tests',
     tests_require=test_requirements
 )
