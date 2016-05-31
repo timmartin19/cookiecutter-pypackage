@@ -59,6 +59,6 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
     ],
-    test_suite='{{cookieuctter.project_slug}}_tests',
+    test_suite='{{cookiecutter.project_slug}}_tests',
     tests_require=test_requirements
 )
