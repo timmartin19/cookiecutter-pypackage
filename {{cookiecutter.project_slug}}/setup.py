@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from os import path
+
+from pip.req import parse_requirements
 from setuptools import setup, find_packages
 
 
@@ -10,19 +13,15 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [
-    'Flask-AppConfig',
-    'flask',
-    'flask-ripozo',
-    'ripozo',
-    'ripozo-sqlalchemy',
-    'SQLAlchemy'
-]
 
-test_requirements = [
-    'unittest2',
-    'mock'
-]
+def get_requirements(file_name):
+    full_path = path.dirname(path.abspath(__file__))
+    full_path = path.join(full_path, 'requirements', file_name)
+    reqs = parse_requirements(full_path, session=False)
+    return [str(ir.req) for ir in reqs]
+
+requirements = get_requirements('stable.txt') + get_requirements('experimental.txt')
+test_requirements = get_requirements('test.txt')
 
 setup(
     name='{{ cookiecutter.project_slug }}',

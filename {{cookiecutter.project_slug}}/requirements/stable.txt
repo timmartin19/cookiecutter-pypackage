@@ -1,0 +1,6 @@
+Flask-AppConfig
+flask
+flask-ripozo
+ripozo
+ripozo-sqlalchemy
+SQLAlchemy

@@ -11,12 +11,15 @@ from flask_appconfig import AppConfig
 from flask_ripozo import FlaskDispatcher
 from ripozo.adapters import SirenAdapter, JSONAPIAdapter
 
+from {{ cookiecutter.project_slug }}.views import VIEWS_BLUEPRINT
+
 
 def create_app(config_dict=None):
     app = Flask('{{cookiecutter.project_slug}}')
     initialize_config(app, config_dict=config_dict)
     initialize_logging(app.config)
     initialize_ripozo(app)
+    initialize_extra_views(app)
     return app
 
 
@@ -37,4 +40,9 @@ def initialize_ripozo(app):
 
 def initialize_logging(config):
     logging_config.dictConfig(config['LOGGING'])
+
+
+def initialize_extra_views(app):
+    app.register_blueprint(VIEWS_BLUEPRINT)
+    return app
 

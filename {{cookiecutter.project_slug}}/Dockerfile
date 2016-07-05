@@ -7,6 +7,11 @@ WORKDIR $APP_ROOT
 
 RUN pip install uwsgi
 
+ADD requirements ${APP_ROOT}/requirements
+RUN pip install -r ${APP_ROOT}/requirements/stable.txt
+RUN pip install -r ${APP_ROOT}/requirements/test.txt
+RUN pip install -r ${APP_ROOT}/requirements/experimental.txt
+
 ADD AUTHORS.rst CONTRIBUTING.rst HISTORY.rst README.rst ./
 ADD setup.py setup.py
 RUN pip install -e .
